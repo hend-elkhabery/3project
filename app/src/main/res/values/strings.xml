@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="hello_card">Hello Card</string>
+    <string name="api_image_size">w185</string>
+    <string name="test">test</string>
+    <string name="img">img</string>
+    <string name="toprated">Top rated</string>
+    <string name="mostpopular">Most popular</string>
+    <string name="title">Title</string>
+    <string name="ivdes">TODO</string>
+    <string name="reviews">Reviews</string>
+    <string name="trailers">Trailers</string>
+</resources>
