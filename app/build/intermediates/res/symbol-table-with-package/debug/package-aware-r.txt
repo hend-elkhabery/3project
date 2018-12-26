@@ -692,6 +692,7 @@ color switch_thumb_material_dark
 color switch_thumb_material_light
 color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
+color textcolor
 color tooltip_background_dark
 color tooltip_background_light
 dimen abc_action_bar_content_inset_material
@@ -1123,6 +1124,7 @@ id icon
 id icon_group
 id ifRoom
 id image
+id imageView
 id info
 id invisible
 id italic
@@ -1166,6 +1168,7 @@ id recyclerview
 id right
 id right_icon
 id right_side
+id rvnothing
 id rvreviews
 id rvtrailers
 id save_image_matrix

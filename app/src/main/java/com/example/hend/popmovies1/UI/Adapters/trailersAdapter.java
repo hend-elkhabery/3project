@@ -38,27 +38,11 @@ public class trailersAdapter  extends RecyclerView.Adapter<trailersAdapter.ViewH
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         viewHolder.textView.setText(mVideoResult.get(i).getName());
-        viewHolder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Trailers clickedDataItem = mVideoResult.get(i);
-                String videoId = mVideoResult.get(i).getKey();
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v="+videoId));
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("VIDEO_ID", videoId);
-                mContext.startActivity(intent);
-
-                Toast.makeText(v.getContext(), "You clicked " + clickedDataItem.getName(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-    }
+       }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mVideoResult.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -76,6 +60,16 @@ public class trailersAdapter  extends RecyclerView.Adapter<trailersAdapter.ViewH
 
         @Override
         public void onClick(View v) {
+
+            int i = getAdapterPosition();
+            Trailers clickedDataItem = mVideoResult.get(i);
+            String videoId = mVideoResult.get(i).getKey();
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v="+videoId));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("VIDEO_ID", videoId);
+            mContext.startActivity(intent);
+
+            Toast.makeText(v.getContext(), "You clicked " + clickedDataItem.getName(), Toast.LENGTH_SHORT).show();
 
         }
     }

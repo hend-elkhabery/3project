@@ -1,58 +1,60 @@
 package com.example.hend.popmovies1.UI.Adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+ import android.support.v7.widget.RecyclerView;
+ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 
- import com.example.hend.popmovies1.R;
-import com.example.hend.popmovies1.POJO.Review;
+import com.example.hend.popmovies1.API.ReviewResponse;
+import com.example.hend.popmovies1.R;
+
 import java.util.List;
 
-public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHolder>{
+public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<Review.Results> reviews;
+    private List<ReviewResponse> reviewResults;
 
-    public ReviewAdapter(Context mContext, List<Review.Results> reviewResults) {
+    public ReviewAdapter(Context mContext, List<ReviewResponse> reviewResults) {
         this.mContext = mContext;
-        this.reviews = reviewResults;
+        this.reviewResults = reviewResults;
+
     }
 
-    @NonNull
     @Override
-    public ReviewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.review_layout, viewGroup, false);
-        return new ReviewAdapter.MyViewHolder(view , mContext , reviews);
+        return new MyViewHolder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ReviewAdapter.MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder (final MyViewHolder viewHolder, int i){
+        viewHolder.witer.setText(reviewResults.get(i).getAuthor());
+        viewHolder.review.setText(reviewResults.get(i).getContent());
 
-        myViewHolder.writer.setText(reviews.get(i).getAuthor());
-        myViewHolder.review.setText(reviews.get(i).getContent());
+
     }
 
     @Override
-    public int getItemCount() {
-        return reviews.size();
+    public int getItemCount(){
+        return reviewResults.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView writer , review;
-        private Context context;
-        private List<Review.Results> datList;
-        public MyViewHolder(@NonNull View itemView , Context context , List<Review.Results> datList) {
-            super(itemView);
-            this.context = context;
-            this.datList = datList;
-            this.review = (TextView) itemView.findViewById(R.id.tvreview);
-            this.writer = (TextView) itemView.findViewById(R.id.tvwriter);
+        public TextView witer, review;
+
+        public MyViewHolder(View view){
+            super(view);
+            witer = (TextView) view.findViewById(R.id.tvwriter);
+            review = (TextView) view.findViewById(R.id.tvreview);
+
+
         }
     }
+
 }

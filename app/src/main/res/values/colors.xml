@@ -5,5 +5,6 @@
     <color name="colorPrimaryDark">#5178ed</color>
     <color name="colorAccent">#000000</color>
     <color name="BG">#000000</color>
+    <color name="textcolor">#ffffff</color>
 
 </resources>

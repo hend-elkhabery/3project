@@ -1,103 +1,121 @@
 package com.example.hend.popmovies1.POJO;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.example.hend.popmovies1.API.ReviewResponse;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Review {
+public class Review implements Parcelable
+{
 
     @SerializedName("id")
-    private int id;
+    @Expose
+    private Integer id;
     @SerializedName("page")
-    private int page;
-    @SerializedName("total_pages")
-    private int totalPages;
-    @SerializedName("total_results")
-    private int totalResults;
+    @Expose
+    private Integer page;
     @SerializedName("results")
-    private List<Results> results;
+    @Expose
+    private List<ReviewResponse> results = null;
+    @SerializedName("total_pages")
+    @Expose
+    private Integer totalPages;
+    @SerializedName("total_results")
+    @Expose
+    private Integer totalResults;
+    public final static Creator<Review> CREATOR = new Creator<Review>() {
 
-    public int getId() {
-        return id;
+
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public Review createFromParcel(Parcel in) {
+            return new Review(in);
+        }
+
+        public Review[] newArray(int size) {
+            return (new Review[size]);
+        }
+
+    }
+            ;
+
+    protected Review(Parcel in) {
+        this.id = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.page = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        in.readList(this.results, (ReviewResponse.class.getClassLoader()));
+        this.totalPages = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.totalResults = ((Integer) in.readValue((Integer.class.getClassLoader())));
     }
 
-    public void setId(int id) {
+
+    public Review() {
+    }
+
+
+    public Review(Integer id, Integer page, List<ReviewResponse> results, Integer totalPages, Integer totalResults) {
+        super();
         this.id = id;
-    }
-
-    public int getPage() {
-        return page;
-    }
-
-    public void setPage(int page) {
         this.page = page;
-    }
-
-    public int getTotalPages() {
-        return totalPages;
-    }
-
-    public void setTotalPages(int totalPages) {
+        this.results = results;
         this.totalPages = totalPages;
-    }
-
-    public int getTotalResults() {
-        return totalResults;
-    }
-
-    public void setTotalResults(int totalResults) {
         this.totalResults = totalResults;
     }
 
-    public List<Results> getResults() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public List<ReviewResponse> getResults() {
         return results;
     }
 
-    public void setResults(List<Results> results) {
+    public void setResults(List<ReviewResponse> results) {
         this.results = results;
     }
 
-    public static class Results {
-        @SerializedName("author")
-        private String author;
-        @SerializedName("content")
-        private String content;
-        @SerializedName("id")
-        private String id;
-        @SerializedName("url")
-        private String url;
-
-        public String getAuthor() {
-            return author;
-        }
-
-        public void setAuthor(String author) {
-            this.author = author;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
+    public Integer getTotalPages() {
+        return totalPages;
     }
+
+    public void setTotalPages(Integer totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public Integer getTotalResults() {
+        return totalResults;
+    }
+
+    public void setTotalResults(Integer totalResults) {
+        this.totalResults = totalResults;
+    }
+
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(id);
+        dest.writeValue(page);
+        dest.writeList(results);
+        dest.writeValue(totalPages);
+        dest.writeValue(totalResults);
+    }
+
+    public int describeContents() {
+        return 0;
+    }
+
 }

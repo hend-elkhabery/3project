@@ -9,13 +9,15 @@ import android.widget.ImageView;
  import android.widget.TextView;
 
 
+ import com.example.hend.popmovies1.API.ReviewResponse;
  import com.example.hend.popmovies1.API.TMDBinterface;
 import com.example.hend.popmovies1.POJO.Review;
 import com.example.hend.popmovies1.POJO.Trailers;
 import com.example.hend.popmovies1.API.TrailersResponse;
  import com.example.hend.popmovies1.R;
  import com.example.hend.popmovies1.UI.Adapters.ReviewAdapter;
-import com.example.hend.popmovies1.UI.Adapters.trailersAdapter;
+ import com.example.hend.popmovies1.UI.Adapters.SampleRecycler;
+ import com.example.hend.popmovies1.UI.Adapters.trailersAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -54,7 +56,11 @@ public class Details_activity extends AppCompatActivity {
         setContentView(R.layout.activity_details_activity);
 
 
-
+        rvreviews= (RecyclerView) findViewById(R.id.rvreviews);
+       // List <ReviewResponse>  mReview = new ArrayList<>();
+        SampleRecycler reviewAdapter = new SampleRecycler();
+        rvreviews.setAdapter(reviewAdapter);
+        reviewAdapter.notifyDataSetChanged();
 
 
         date =  findViewById(R.id.tvdate);
@@ -80,21 +86,27 @@ public class Details_activity extends AppCompatActivity {
     private void initViews() {
 
         rvtrailers = (RecyclerView) findViewById(R.id.rvtrailers);
-        ArrayList <Trailers> mTrailers = new ArrayList<>();
+        List <Trailers> mTrailers = new ArrayList<>();
         trailersAdapter = new trailersAdapter(mTrailers ,this);
 
+
+       /* RecyclerView myRecycler = (RecyclerView) findViewById(R.id.rvnothing);
+        myRecycler.setLayoutManager(new LinearLayoutManager(this));
+        myRecycler.setAdapter(new SampleRecycler());
+
+
+
         rvreviews= (RecyclerView) findViewById(R.id.rvreviews);
-        ArrayList <Review.Results>  mReview = new ArrayList<>();
+        List <ReviewResponse>  mReview = new ArrayList<>();
         reviewAdapter = new ReviewAdapter(this , mReview);
+*/
 
-
-        loadReviews();
-        loadTrailers();
+       loadReviews();
+       loadTrailers();
 
 
     }
-
-    public void loadTrailers() {
+     public void loadTrailers() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(Base_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -111,7 +123,7 @@ public class Details_activity extends AppCompatActivity {
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext() , LinearLayoutManager.VERTICAL , false);
                 rvtrailers.setLayoutManager(mLayoutManager);
                 rvtrailers.setAdapter(new trailersAdapter(trailers , getApplicationContext()));
-                //rvtrailers.hasFixedSize();
+                rvtrailers.hasFixedSize();
 
             }
 
@@ -123,8 +135,7 @@ public class Details_activity extends AppCompatActivity {
 
 
     }
-
-    public void loadReviews(){
+     public void loadReviews(){
         retrofit = new Retrofit.Builder()
                 .baseUrl(Base_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -137,13 +148,14 @@ public class Details_activity extends AppCompatActivity {
         reviewCall.enqueue(new Callback<Review>() {
             @Override
             public void onResponse(Call<Review> call, Response<Review> response) {
-                List<Review.Results> reviewResponses = response.body().getResults();
-                ReviewAdapter reviewAdapter = new ReviewAdapter(getApplicationContext() , reviewResponses);
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext() , LinearLayoutManager.VERTICAL , false);
-                rvreviews.setLayoutManager(mLayoutManager);
+                List<ReviewResponse> reviewResponses = new ArrayList<>();
+                reviewResponses.addAll(response.body().getResults());
+                LinearLayoutManager firstManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                rvreviews.setLayoutManager(firstManager);
+                ReviewAdapter reviewAdapter = new ReviewAdapter(getApplicationContext(), reviewResponses);
                 rvreviews.setAdapter(reviewAdapter);
-               // rvreviews.hasFixedSize();
-
+                reviewAdapter.notifyDataSetChanged();
+                 rvreviews.setHasFixedSize(true);
             }
 
             @Override
@@ -153,5 +165,8 @@ public class Details_activity extends AppCompatActivity {
         });
 
 
+
+
     }
+
 }
