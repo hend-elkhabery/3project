@@ -1,6 +1,7 @@
 package com.example.hend.popmovies1.UI.act;
 
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.hend.popmovies1.Data.FavoriteDbHelper;
 import com.example.hend.popmovies1.POJO.MovieModel;
 import com.example.hend.popmovies1.API.MoviesResponse;
 import com.example.hend.popmovies1.API.TMDBinterface;
@@ -36,11 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
      ArrayList<MovieModel> Lmostpopular = new ArrayList<>();
     ArrayList<MovieModel> Ltoprated = new ArrayList<>();
+    ArrayList<MovieModel> Lfavmovies = new ArrayList<>();
+
 
     int Select;
     RecyclerView mRecyclerView;
     GridLayoutManager mGridLayoutManager;
     MoviesAdapter moviesAdapter ;
+
+    FavoriteDbHelper favoriteDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +129,31 @@ public class MainActivity extends AppCompatActivity {
             Select = 2;
             mRecyclerView.setAdapter(new MoviesAdapter(Lmostpopular, MainActivity.this));
         }
+        if (id == R.id.fav) {
+            Select = 3;
+            loadfav();
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void loadfav() {
+        mRecyclerView = findViewById(R.id.recyclerview);
+        mGridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
+
+        new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... params){
+                Lfavmovies.addAll(favoriteDbHelper.getAllFavorite());
+                return null;
+            }
+            @Override
+            protected void onPostExecute(Void aVoid){
+                super.onPostExecute(aVoid);
+                moviesAdapter.notifyDataSetChanged();
+            }
+        }.execute();
+
     }
 
 

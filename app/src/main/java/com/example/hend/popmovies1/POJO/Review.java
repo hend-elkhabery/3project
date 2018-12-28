@@ -9,8 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Review implements Parcelable
-{
+public class Review implements Parcelable{
 
     @SerializedName("id")
     @Expose

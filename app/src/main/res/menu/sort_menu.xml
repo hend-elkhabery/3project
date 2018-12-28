@@ -11,4 +11,9 @@
         android:id="@+id/mostpopular"
         android:orderInCategory="101"
         android:title="@string/mostpopular" />
+
+    <item
+        android:id="@+id/fav"
+        android:orderInCategory="101"
+        android:title="@string/fav" />
 </menu>

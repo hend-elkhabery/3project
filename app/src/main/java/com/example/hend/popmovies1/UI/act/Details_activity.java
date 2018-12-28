@@ -1,17 +1,25 @@
 package com.example.hend.popmovies1.UI.act;
 
+ import android.content.SharedPreferences;
+ import android.graphics.Movie;
+ import android.preference.PreferenceManager;
+ import android.support.design.widget.Snackbar;
  import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.ImageView;
 
  import android.widget.TextView;
 
 
  import com.example.hend.popmovies1.API.ReviewResponse;
  import com.example.hend.popmovies1.API.TMDBinterface;
-import com.example.hend.popmovies1.POJO.Review;
+ import com.example.hend.popmovies1.Data.FavoriteDbHelper;
+ import com.example.hend.popmovies1.POJO.MovieModel;
+ import com.example.hend.popmovies1.POJO.Review;
 import com.example.hend.popmovies1.POJO.Trailers;
 import com.example.hend.popmovies1.API.TrailersResponse;
  import com.example.hend.popmovies1.R;
@@ -38,10 +46,13 @@ public class Details_activity extends AppCompatActivity {
 
     ImageView ivposter;
     TextView date  , rating ,description , title;
+    Button btnfav;
 
 
     Retrofit retrofit;
     TMDBinterface moviesAPI;
+
+    int movie_id;
 
     trailersAdapter trailersAdapter ;
     ReviewAdapter reviewAdapter ;
@@ -49,25 +60,33 @@ public class Details_activity extends AppCompatActivity {
     private RecyclerView rvtrailers;
     private RecyclerView rvreviews;
 
+    MovieModel movie;
+
+      FavoriteDbHelper favoriteDbHelper;
+      boolean fav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_activity);
 
-
+/*
         rvreviews= (RecyclerView) findViewById(R.id.rvreviews);
        // List <ReviewResponse>  mReview = new ArrayList<>();
         SampleRecycler reviewAdapter = new SampleRecycler();
         rvreviews.setAdapter(reviewAdapter);
         reviewAdapter.notifyDataSetChanged();
 
+*/
+        btnfav  = findViewById(R.id.btnfav);
 
         date =  findViewById(R.id.tvdate);
         description =  findViewById(R.id.tvoverview);
         rating =  findViewById(R.id.tvrating);
         title =  findViewById(R.id.tvtitle);
         ivposter =   findViewById(R.id.ivposter);
+
+         movie_id = getIntent().getExtras().getInt("id");
 
         date.setText(getIntent().getExtras().getString("release_date"));
         description.setText(getIntent().getExtras().getString("overview"));
@@ -80,8 +99,47 @@ public class Details_activity extends AppCompatActivity {
                 .into(ivposter);
 
         initViews();
-    }
+////////////////////////////////////  add favorite
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
+
+        btnfav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                     if (fav){
+                        SharedPreferences.Editor editor = getSharedPreferences("Details activity", MODE_PRIVATE).edit();
+                        editor.putBoolean("Favorite Added", true);
+                        editor.commit();
+                        saveFavorite();
+                        Snackbar.make(btnfav, "Added to Favorite", Snackbar.LENGTH_SHORT).show();
+                    }else{
+                        int movie_id = getIntent().getExtras().getInt("id");
+                        favoriteDbHelper = new FavoriteDbHelper(Details_activity.this);
+                        favoriteDbHelper.deleteFavorite(movie_id);
+
+                        SharedPreferences.Editor editor = getSharedPreferences("Detail activity", MODE_PRIVATE).edit();
+                        editor.putBoolean("Favorite Removed", true);
+                        editor.commit();
+                        Snackbar.make(btnfav, "Removed from Favorite", Snackbar.LENGTH_SHORT).show();
+                    }
+
+            }
+        });
+
+    }
+    public void saveFavorite(){
+        FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(Details_activity.this);
+         MovieModel favorite = new MovieModel();
+
+        Double rate = movie.getVote_average();
+        favorite.setId(movie_id);
+        favorite.setOriginal_title(getIntent().getExtras().getString("title"));
+        favorite.setPoster_path(movie.getPoster_path());
+        favorite.setVote_average(rate);
+        favorite.setOverview(getIntent().getExtras().getString("overview"));
+
+        favoriteDbHelper.addFavorite(favorite);
+    }
 
     private void initViews() {
 
@@ -89,17 +147,17 @@ public class Details_activity extends AppCompatActivity {
         List <Trailers> mTrailers = new ArrayList<>();
         trailersAdapter = new trailersAdapter(mTrailers ,this);
 
-
-       /* RecyclerView myRecycler = (RecyclerView) findViewById(R.id.rvnothing);
+/*
+        RecyclerView myRecycler = (RecyclerView) findViewById(R.id.rvnothing);
         myRecycler.setLayoutManager(new LinearLayoutManager(this));
         myRecycler.setAdapter(new SampleRecycler());
 
-
+*/
 
         rvreviews= (RecyclerView) findViewById(R.id.rvreviews);
-        List <ReviewResponse>  mReview = new ArrayList<>();
+        ArrayList <ReviewResponse>  mReview = new ArrayList<>();
         reviewAdapter = new ReviewAdapter(this , mReview);
-*/
+
 
        loadReviews();
        loadTrailers();
@@ -148,14 +206,14 @@ public class Details_activity extends AppCompatActivity {
         reviewCall.enqueue(new Callback<Review>() {
             @Override
             public void onResponse(Call<Review> call, Response<Review> response) {
-                List<ReviewResponse> reviewResponses = new ArrayList<>();
+                ArrayList<ReviewResponse> reviewResponses = new ArrayList<>();
                 reviewResponses.addAll(response.body().getResults());
                 LinearLayoutManager firstManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
                 rvreviews.setLayoutManager(firstManager);
                 ReviewAdapter reviewAdapter = new ReviewAdapter(getApplicationContext(), reviewResponses);
                 rvreviews.setAdapter(reviewAdapter);
                 reviewAdapter.notifyDataSetChanged();
-                 rvreviews.setHasFixedSize(true);
+                rvreviews.setHasFixedSize(true);
             }
 
             @Override

@@ -1075,6 +1075,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id btnfav
 id buttonPanel
 id center
 id center_horizontal
@@ -1108,6 +1109,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fav
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1383,6 +1385,7 @@ string character_counter_content_description
 string character_counter_pattern
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fav
 string hello_card
 string hide_bottom_view_on_scroll_behavior
 string img
