@@ -1,15 +1,13 @@
 package com.example.hend.popmovies1.UI.act;
 
  import android.content.SharedPreferences;
- import android.graphics.Movie;
- import android.preference.PreferenceManager;
+  import android.preference.PreferenceManager;
  import android.support.design.widget.Snackbar;
  import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
- import android.view.View;
- import android.widget.Button;
+  import android.widget.Button;
  import android.widget.ImageView;
 
  import android.widget.TextView;
@@ -70,15 +68,7 @@ public class Details_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_activity);
 
-/*
-        rvreviews= (RecyclerView) findViewById(R.id.rvreviews);
-       // List <ReviewResponse>  mReview = new ArrayList<>();
-        SampleRecycler reviewAdapter = new SampleRecycler();
-        rvreviews.setAdapter(reviewAdapter);
-        reviewAdapter.notifyDataSetChanged();
-
-*/
-        btnfav  = findViewById(R.id.btnfav);
+     btnfav  = findViewById(R.id.btnfav);
 
         date =  findViewById(R.id.tvdate);
         description =  findViewById(R.id.tvoverview);
@@ -100,31 +90,40 @@ public class Details_activity extends AppCompatActivity {
 
         initViews();
 ////////////////////////////////////  add favorite
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-
+/*
         btnfav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                     if (fav){
-                        SharedPreferences.Editor editor = getSharedPreferences("Details activity", MODE_PRIVATE).edit();
-                        editor.putBoolean("Favorite Added", true);
-                        editor.commit();
-                        saveFavorite();
-                        Snackbar.make(btnfav, "Added to Favorite", Snackbar.LENGTH_SHORT).show();
-                    }else{
-                        int movie_id = getIntent().getExtras().getInt("id");
-                        favoriteDbHelper = new FavoriteDbHelper(Details_activity.this);
-                        favoriteDbHelper.deleteFavorite(movie_id);
-
-                        SharedPreferences.Editor editor = getSharedPreferences("Detail activity", MODE_PRIVATE).edit();
-                        editor.putBoolean("Favorite Removed", true);
-                        editor.commit();
-                        Snackbar.make(btnfav, "Removed from Favorite", Snackbar.LENGTH_SHORT).show();
-                    }
-
+                fav = true;
+                onFavoriteChanged(btnfav , fav);
             }
         });
+        */
+
+    }
+
+    public void onFavoriteChanged(Button buttonView, boolean favorite){
+        if (favorite){
+            SharedPreferences.Editor editor = getSharedPreferences("Details_activity", MODE_PRIVATE).edit();
+            editor.putBoolean("Favorite Added", true);
+            editor.commit();
+            saveFavorite();
+            Snackbar.make(buttonView, "Added to Favorite",
+                    Snackbar.LENGTH_SHORT).show();
+        }else{
+            int movie_id = getIntent().getExtras().getInt("id");
+            favoriteDbHelper = new FavoriteDbHelper(Details_activity.this);
+            favoriteDbHelper.deleteFavorite(movie_id);
+
+            SharedPreferences.Editor editor = getSharedPreferences("Details_activity", MODE_PRIVATE).edit();
+            editor.putBoolean("Favorite Removed", true);
+            editor.commit();
+            Snackbar.make(buttonView, "Removed from Favorite",
+                    Snackbar.LENGTH_SHORT).show();
+        }
 
     }
     public void saveFavorite(){
@@ -214,7 +213,8 @@ public class Details_activity extends AppCompatActivity {
                 rvreviews.setAdapter(reviewAdapter);
                 reviewAdapter.notifyDataSetChanged();
                 rvreviews.setHasFixedSize(true);
-            }
+               // rvreviews.scrollToPosition(0);
+             }
 
             @Override
             public void onFailure(Call<Review> call, Throwable t) {

@@ -695,6 +695,7 @@ color switch_thumb_normal_material_light
 color textcolor
 color tooltip_background_dark
 color tooltip_background_light
+color tvbg
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -917,6 +918,7 @@ dimen notification_top_pad
 dimen notification_top_pad_large_text
 dimen songs_count
 dimen songs_count_padding_bottom
+dimen textsize
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -1120,6 +1122,8 @@ id ghost_view
 id gone
 id group_divider
 id groups
+id guideline
+id guideline2
 id home
 id homeAsUp
 id icon
@@ -1170,7 +1174,6 @@ id recyclerview
 id right
 id right_icon
 id right_side
-id rvnothing
 id rvreviews
 id rvtrailers
 id save_image_matrix
@@ -1224,6 +1227,8 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
+id textView2
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1377,12 +1382,14 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string add_to_favorites
 string api_image_size
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string character_counter_content_description
 string character_counter_pattern
+string des
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fav
@@ -1633,6 +1640,7 @@ style RtlOverlay_Widget_AppCompat_Search_DropDown_Text
 style RtlOverlay_Widget_AppCompat_SearchView_MagIcon
 style RtlUnderlay_Widget_AppCompat_ActionButton
 style RtlUnderlay_Widget_AppCompat_ActionButton_Overflow
+style ScrollbarRecyclerView
 style TextAppearance_AppCompat
 style TextAppearance_AppCompat_Body1
 style TextAppearance_AppCompat_Body2

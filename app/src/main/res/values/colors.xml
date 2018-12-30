@@ -6,5 +6,6 @@
     <color name="colorAccent">#000000</color>
     <color name="BG">#000000</color>
     <color name="textcolor">#ffffff</color>
+    <color name="tvbg">#009587</color>
 
 </resources>
