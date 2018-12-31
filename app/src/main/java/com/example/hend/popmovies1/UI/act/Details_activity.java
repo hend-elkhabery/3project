@@ -7,10 +7,12 @@ package com.example.hend.popmovies1.UI.act;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-  import android.widget.Button;
+ import android.view.View;
+ import android.widget.Button;
  import android.widget.ImageView;
 
  import android.widget.TextView;
+ import android.widget.Toast;
 
 
  import com.example.hend.popmovies1.API.ReviewResponse;
@@ -43,7 +45,10 @@ public class Details_activity extends AppCompatActivity {
     public static String Base_URL = "http://api.themoviedb.org";
 
     ImageView ivposter;
-    TextView date  , rating ,description , title;
+    TextView date , rating ,description,title;
+
+    String strdate , strdescription , strtitle , strposter;
+    double drating;
     Button btnfav;
 
 
@@ -78,66 +83,73 @@ public class Details_activity extends AppCompatActivity {
 
          movie_id = getIntent().getExtras().getInt("id");
 
-        date.setText(getIntent().getExtras().getString("release_date"));
-        description.setText(getIntent().getExtras().getString("overview"));
-        rating.setText(String.valueOf(getIntent().getExtras().getDouble("vote_average"))+"/10");
-        title.setText(getIntent().getExtras().getString("title"));
+        strdate = getIntent().getExtras().getString("release_date");
+        date.setText(strdate);
+
+        strdescription = getIntent().getExtras().getString("overview");
+        description.setText(strdescription);
+
+        drating =getIntent().getExtras().getDouble("vote_average");
+        rating.setText(String.valueOf( drating )+ "/10");
+
+        strtitle = getIntent().getExtras().getString("title");
+        title.setText(strtitle);
+
+        strposter = getIntent().getExtras().getString("poster_path");
         Picasso.get()
-                .load("http://image.tmdb.org/t/p/w185/" + getIntent().getExtras().getString("poster_path"))
+                .load("http://image.tmdb.org/t/p/w185/" +strposter )
                 .placeholder(R.color.colorAccent)
                 .error(R.drawable.ic_launcher_background)
                 .into(ivposter);
 
         initViews();
+
 ////////////////////////////////////  add favorite
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-/*
+
         btnfav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fav = true;
-                onFavoriteChanged(btnfav , fav);
+                if (fav){
+                    SharedPreferences.Editor editor = getSharedPreferences("Details_activity", MODE_PRIVATE).edit();
+                    editor.putBoolean("Favorite Added", true);
+                    editor.commit();
+                    saveFavorite();
+                    Toast.makeText(Details_activity.this,"Added to Favorite" , Toast.LENGTH_LONG).show();
+
+                }else{
+                    int movie_id = getIntent().getExtras().getInt("id");
+                    favoriteDbHelper = new FavoriteDbHelper(Details_activity.this);
+                    favoriteDbHelper.deleteFavorite(movie_id);
+
+                    SharedPreferences.Editor editor = getSharedPreferences("Details_activity", MODE_PRIVATE).edit();
+                    editor.putBoolean("Favorite Removed", true);
+                    editor.commit();
+                    Toast.makeText(Details_activity.this,"Removed from Favorite" , Toast.LENGTH_LONG).show();
+                }
+
             }
         });
-        */
+
 
     }
 
-    public void onFavoriteChanged(Button buttonView, boolean favorite){
-        if (favorite){
-            SharedPreferences.Editor editor = getSharedPreferences("Details_activity", MODE_PRIVATE).edit();
-            editor.putBoolean("Favorite Added", true);
-            editor.commit();
-            saveFavorite();
-            Snackbar.make(buttonView, "Added to Favorite",
-                    Snackbar.LENGTH_SHORT).show();
-        }else{
-            int movie_id = getIntent().getExtras().getInt("id");
-            favoriteDbHelper = new FavoriteDbHelper(Details_activity.this);
-            favoriteDbHelper.deleteFavorite(movie_id);
-
-            SharedPreferences.Editor editor = getSharedPreferences("Details_activity", MODE_PRIVATE).edit();
-            editor.putBoolean("Favorite Removed", true);
-            editor.commit();
-            Snackbar.make(buttonView, "Removed from Favorite",
-                    Snackbar.LENGTH_SHORT).show();
-        }
-
-    }
     public void saveFavorite(){
         FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(Details_activity.this);
          MovieModel favorite = new MovieModel();
 
-        Double rate = movie.getVote_average();
+
         favorite.setId(movie_id);
-        favorite.setOriginal_title(getIntent().getExtras().getString("title"));
-        favorite.setPoster_path(movie.getPoster_path());
-        favorite.setVote_average(rate);
-        favorite.setOverview(getIntent().getExtras().getString("overview"));
+        favorite.setOriginal_title(strtitle);
+        favorite.setPoster_path(strposter);
+        favorite.setVote_average(drating);
+        favorite.setOverview(strdescription);
 
         favoriteDbHelper.addFavorite(favorite);
+
+        Toast.makeText(Details_activity.this,"Added to Favorite" , Toast.LENGTH_LONG).show();
+
     }
 
     private void initViews() {

@@ -1,4 +1,4 @@
-#Sun Dec 30 16:03:17 EET 2018
+#Mon Dec 31 22:41:50 EET 2018
 base.0=H\:\\android\\ntl\\nano degree\\projects\\3project\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\7
 path.0=classes.dex
 renamed.0=classes.dex
