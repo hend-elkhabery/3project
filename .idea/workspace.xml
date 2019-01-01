@@ -37,17 +37,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Details_activity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Details_activity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/act/Details_activity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="136" column="4" selection-start-line="136" selection-start-column="4" selection-end-line="136" selection-end-column="4" />
+            <state relative-caret-position="256">
+              <caret line="125" column="56" lean-forward="true" selection-start-line="125" selection-start-column="56" selection-end-line="125" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3355#3960#0" expanded="true" />
-                <element signature="e#3959#3960#0" expanded="true" />
+                <element signature="e#3451#5593#0" expanded="true" />
+                <element signature="e#5592#5593#0" expanded="true" />
                 <element signature="method#loadTrailers#0;class#Details_activity#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="50" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -76,15 +85,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MoviesAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/Adapters/MoviesAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="55" column="71" selection-start-line="55" selection-start-column="71" selection-end-line="55" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MovieModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/POJO/MovieModel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,8 +103,17 @@
       <file leaf-file-name="FavoriteDbHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/Data/FavoriteDbHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="933">
-              <caret line="82" column="28" lean-forward="true" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
+            <state relative-caret-position="112">
+              <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseColumns.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/provider/BaseColumns.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -118,7 +127,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_details_activity.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="activity_details_activity.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_details_activity.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="2805">
@@ -130,23 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/act/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
-              <folding>
-                <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FavoriteContract.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/Data/FavoriteContract.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+            <state relative-caret-position="153">
+              <caret line="9" column="60" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -168,6 +165,7 @@
       <find>LinearLayout</find>
       <find>rvr</find>
       <find>fav</find>
+      <find>geta</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2471,7 +2469,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/Adapters/SampleHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/Adapters/SampleRecycler.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/POJO/Review.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/Data/FavoriteDbHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/sort_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
@@ -2480,9 +2477,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/act/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/review_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_details_activity.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/trailers_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/Data/FavoriteDbHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/act/Details_activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_details_activity.xml" />
       </list>
     </option>
   </component>
@@ -2583,15 +2581,15 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="192.168.187.101:5555" />
-    <property name="last_opened_file_path" value="H:/delet/stage 2/555/MoviesApp-master" />
+    <property name="last_opened_file_path" value="H:/delet/4stage2/udacity-popular-movies-stage-2-master" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Background" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.hend.popmovies1.UI.Adapters" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\android\ntl\nano degree\projects\3project\app\src\main\java\com\example\hend\popmovies1\Data" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.hend.popmovies1.UI.Adapters" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2737,7 +2735,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="752" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="752" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="12" />
@@ -2756,6 +2754,7 @@
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14674735" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49848714" weight="0.32899022" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
       <window_info anchor="right" id="Gradle" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
@@ -2770,7 +2769,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49848714" weight="0.32899022" />
@@ -2789,6 +2787,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5015129" side_tool="true" weight="0.32899022" />
       <window_info anchor="right" id="Preview" order="7" weight="0.3570348" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Logcat" order="10" weight="0.66775244" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32899022" />
@@ -2802,8 +2801,7 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4315961" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4315961" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -2853,17 +2851,10 @@
           <properties />
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="41" />
+      <option name="time" value="45" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/Adapters/MoviesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/POJO/MovieModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -2959,13 +2950,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="85" selection-start-line="30" selection-start-column="85" selection-end-line="30" selection-end-column="85" />
         </state>
       </provider>
     </entry>
@@ -3163,13 +3147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/Data/FavoriteContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/POJO/MovieModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -3183,44 +3160,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/Adapters/MoviesAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="55" column="71" selection-start-line="55" selection-start-column="71" selection-end-line="55" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-25/android/database/sqlite/SQLiteOpenHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="161" selection-start-line="161" selection-end-line="161" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/review_layout.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_details_activity.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="2805">
-          <caret line="167" column="47" selection-start-line="167" selection-start-column="47" selection-end-line="167" selection-end-column="47" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/Data/FavoriteDbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="933">
-          <caret line="82" column="28" lean-forward="true" selection-start-line="82" selection-start-column="28" selection-end-line="82" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -3234,17 +3177,72 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/Adapters/MoviesAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="52" column="69" lean-forward="true" selection-start-line="52" selection-start-column="69" selection-end-line="52" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/review_layout.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/provider/BaseColumns.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/Data/FavoriteContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="60" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/Data/FavoriteDbHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/hend/popmovies1/UI/act/Details_activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="136" column="4" selection-start-line="136" selection-start-column="4" selection-end-line="136" selection-end-column="4" />
+        <state relative-caret-position="256">
+          <caret line="125" column="56" lean-forward="true" selection-start-line="125" selection-start-column="56" selection-end-line="125" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3355#3960#0" expanded="true" />
-            <element signature="e#3959#3960#0" expanded="true" />
+            <element signature="e#3451#5593#0" expanded="true" />
+            <element signature="e#5592#5593#0" expanded="true" />
             <element signature="method#loadTrailers#0;class#Details_activity#0" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_details_activity.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="2805">
+          <caret line="167" column="47" selection-start-line="167" selection-start-column="47" selection-end-line="167" selection-end-column="47" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
   </component>

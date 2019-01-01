@@ -23,6 +23,8 @@ public class FavoriteDbHelper extends SQLiteOpenHelper {
     SQLiteOpenHelper dbhandler;
     SQLiteDatabase db;
 
+    String selectQuery;
+
     public FavoriteDbHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -60,6 +62,28 @@ public class FavoriteDbHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean Cheakmovie(String movieid) {
+        String query = "Select * from " + "favorite" + " where " + "movieid" + " = movieid";
+        return getReadableDatabase().rawQuery(query, new String[]{movieid}).moveToFirst();
+    }
+
+  /*  public boolean Cheakmovie(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "SELECT EXISTS (SELECT * FROM favorite WHERE movieid='"+id+")";
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+
+         if (cursor.getInt(0) == 1) {
+            cursor.close();
+            return true;
+        } else {
+            cursor.close();
+            return false;
+        }
+
+    }
+*/
     public void addFavorite(MovieModel movie){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -74,9 +98,11 @@ public class FavoriteDbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteFavorite(int id){
+    public int deleteFavorite(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(FavoriteContract.FavoriteEntry.TABLE_NAME, FavoriteContract.FavoriteEntry.COLUMN_MOVIEID+ "=" +  id, null);
+
+    return 1;
     }
 
     public List<MovieModel> getAllFavorite(){

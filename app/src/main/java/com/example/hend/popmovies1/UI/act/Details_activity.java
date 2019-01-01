@@ -1,5 +1,6 @@
 package com.example.hend.popmovies1.UI.act;
 
+ import android.content.Context;
  import android.content.SharedPreferences;
   import android.preference.PreferenceManager;
  import android.support.design.widget.Snackbar;
@@ -24,7 +25,6 @@ import com.example.hend.popmovies1.POJO.Trailers;
 import com.example.hend.popmovies1.API.TrailersResponse;
  import com.example.hend.popmovies1.R;
  import com.example.hend.popmovies1.UI.Adapters.ReviewAdapter;
- import com.example.hend.popmovies1.UI.Adapters.SampleRecycler;
  import com.example.hend.popmovies1.UI.Adapters.trailersAdapter;
 import com.squareup.picasso.Picasso;
 
@@ -66,7 +66,8 @@ public class Details_activity extends AppCompatActivity {
     MovieModel movie;
 
       FavoriteDbHelper favoriteDbHelper;
-      boolean fav;
+      boolean fav = true ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,11 +107,37 @@ public class Details_activity extends AppCompatActivity {
 
 ////////////////////////////////////  add favorite
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
 
         btnfav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                  fav =  favoriteDbHelper.Cheakmovie(String.valueOf(movie_id));
+
+                if(fav == false){
+                    saveFavorite();
+                 SharedPreferences.Editor editor = getSharedPreferences( "com.example.hend.popmovies1.fav", MODE_PRIVATE).edit();
+                 editor.putBoolean("Favorite Added", true);
+                 editor.commit();
+
+                 fav = true;
+                 btnfav.setText("Delet from Favorites");
+
+             }
+             else
+                 {
+                      SharedPreferences.Editor editor = getSharedPreferences("com.example.hend.popmovies1.fav", MODE_PRIVATE).edit();
+                     editor.putBoolean("Favorite Removed", true);
+                     editor.commit();
+
+                     fav = false;
+                     btnfav.setText("Mark as Favorite");
+
+                 }
+
+                /*
                 if (fav){
                     SharedPreferences.Editor editor = getSharedPreferences("Details_activity", MODE_PRIVATE).edit();
                     editor.putBoolean("Favorite Added", true);
@@ -128,6 +155,7 @@ public class Details_activity extends AppCompatActivity {
                     editor.commit();
                     Toast.makeText(Details_activity.this,"Removed from Favorite" , Toast.LENGTH_LONG).show();
                 }
+                */
 
             }
         });
@@ -158,12 +186,7 @@ public class Details_activity extends AppCompatActivity {
         List <Trailers> mTrailers = new ArrayList<>();
         trailersAdapter = new trailersAdapter(mTrailers ,this);
 
-/*
-        RecyclerView myRecycler = (RecyclerView) findViewById(R.id.rvnothing);
-        myRecycler.setLayoutManager(new LinearLayoutManager(this));
-        myRecycler.setAdapter(new SampleRecycler());
 
-*/
 
         rvreviews= (RecyclerView) findViewById(R.id.rvreviews);
         ArrayList <ReviewResponse>  mReview = new ArrayList<>();
